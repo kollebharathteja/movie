@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Details</title>
+    <style>
+        img:hover {
+    filter: brightness(130%);
+    box-shadow: 0 0 15px gold;
+}
+img:hover {
+    filter: brightness(140%);
+}
+img:hover {
+    filter: brightness(125%) contrast(110%);
+    transform: translateY(-5px);
+}
+        body {
+            background: #0a0101;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+            padding: 10px;
+        }
+        img {
+            width: 250px;
+            border-radius: 50px;
+            margin: 10px;
+        }
+        .box {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #rating{
+            font-size: large;
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2 id="name"></h2>
+    <p>⭐ Rating: <span id="rating"></span></p>
+    <p>💰 Budget: <span id="budget"></span></p>
+
+    <h3>Hero</h3>
+    <img id="heroImg">
+    <p id="hero"></p>
+
+    <h3>Heroine</h3>
+    <img id="heroineImg">
+    <p id="heroine"></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+name.innerText = params.get("name");
+rating.innerText = params.get("rating");
+budget.innerText = params.get("budget");
+
+hero.innerText = params.get("hero");
+heroine.innerText = params.get("heroine");
+
+heroImg.src = params.get("heroImg");
+heroineImg.src = params.get("heroineImg");
+</script>
+
+</body>
+</html>

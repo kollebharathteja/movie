@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+    <style>
+        
+        body {
+            background: #120f0f;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+        }
+        h2 {
+    font-size: 32px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 1s ease;
+}
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+            gap: 10px;
+            padding: 100px;
+        }
+        img {
+            width: 300px;
+            height: 350px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        .movies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+@media (max-width: 900px) {
+    .movies {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .movies {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+footer {
+    background: #1f1f1f;
+    padding: 15px;
+    text-align: center;
+}
+
+.footer-name {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.footer-name .full {
+    display: none;
+    color: gold;
+    font-weight: bold;
+}
+
+.footer-name .short {
+    color: #aaa;
+}
+
+/* Hover Effect */
+.footer-name:hover .short {
+    display: none;
+}
+
+.footer-name:hover .full {
+    display: inline;
+}
+.movies img {
+    transition: 0.3s ease;
+    filter: brightness(80%);
+}
+
+/* When mouse goes near image */
+.movies img:hover {
+    filter: brightness(120%);
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+
+<h2>Movie Gallery</h2>
+
+<div class="movies">
+    <img src="https://res.cloudinary.com/dprun8bhl/image/upload/v1767361025/rrr_yteqkl.jpg" onclick="openMovie(0)">
+    <img src="https://res.cloudinary.com/dprun8bhl/image/upload/v1767361929/bahubali_htycde.jpg" onclick="openMovie(1)">
+    <img src="https://res.cloudinary.com/dprun8bhl/image/upload/v1767362024/pushpa_vsamf8.jpg" onclick="openMovie(2)">
+    <img src="https://res.cloudinary.com/dprun8bhl/image/upload/v1767364822/kgf_icgzvg.jpg" onclick="openMovie(3)">
+    <img src="https://res.cloudinary.com/dprun8bhl/image/upload/v1767365384/salaar_e9hqbi.jpg" onclick="openMovie(4)">
+    <img src="https://res.cloudinary.com/dprun8bhl/image/upload/v1767365797/animal_eexr7s.jpg" onclick="openMovie(5)">
+</div>
+
+<script>
+const movies = [
+    {
+        name: "RRR",
+        hero: "Ram Charan",
+        heroine: "Alia Bhatt",
+        rating: "4.8",
+        budget: "₹550 Crores",
+        heroImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767361437/ram_u7197r.jpg",
+        heroineImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767361447/alia_zptdek.jpg"
+    },
+    {
+        name: "Bahubali",
+        hero: "Prabhas",
+        heroine: "Anushka",
+        rating: "4.9",
+        budget: "₹450 Crores",
+        heroImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767362227/prabas_hxmprd.jpg",
+        heroineImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767362242/anushka_x5v13r.jpg"
+    },
+    {
+        name: "Pushpa",
+        hero: "Allu Arjun",
+        heroine: "Rashmika",
+        rating: "4.5",
+        budget: "₹200 Crores",
+        heroImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767362455/aa_xosinr.jpg",
+        heroineImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767362467/srivalli_jnzww8.jpg"
+    },
+    {
+        name: "KGF",
+        hero: "Yash",
+        heroine: "Srinidhi",
+        rating: "4.7",
+        budget: "₹100 Crores",
+        heroImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767364847/yesh_jnwbca.jpg",
+        heroineImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767364838/kgf_heroine_iqlc7s.jpg"
+    },
+     {
+        name: "Salaar",
+        hero: "Prabhas",
+        heroine: "Shruti Haasan",
+        rating: "4.6",
+        budget: "₹400 Crores",
+        heroImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767365396/salaarprabas_yca0xw.jpg",
+        heroineImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767365407/salaar_sruthi_mxb2se.jpg"
+    },
+     {
+        name: "Animal",
+        hero: "Ranbir Kapoor",
+        heroine: "Rashmika Mandanna",
+        rating: "4.6",
+        budget: "₹250 Crores",
+        heroImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767365804/animal_hero_wg2bef.jpg",
+        heroineImg: "https://res.cloudinary.com/dprun8bhl/image/upload/v1767365814/animalheroine_vwbhm4.jpg"
+    },
+    
+];
+
+function openMovie(i) {
+    const m = movies[i];
+    const url =
+      `movie-details.html?name=${encodeURIComponent(m.name)}
+      &hero=${encodeURIComponent(m.hero)}
+      &heroine=${encodeURIComponent(m.heroine)}
+      &rating=${m.rating}
+      &budget=${encodeURIComponent(m.budget)}
+      &heroImg=${encodeURIComponent(m.heroImg)}
+      &heroineImg=${encodeURIComponent(m.heroineImg)}`;
+
+    window.location.href = url;
+}
+const colors = ["#ff5252", "#ff9800", "#4caf50", "#2196f3", "#e91e63"];
+let i = 0;
+
+setInterval(() => {
+    document.querySelector("h2").style.color = colors[i];
+    i = (i + 1) % colors.length;
+}, 5000)
+
+</script>
+<footer> <p class="footer-name">
+        <span class="short"> © KBT</span>
+        <span class="full"> © King Bharath Teja</span>
+    </p> </footer>
+
+</body>
+</html>
